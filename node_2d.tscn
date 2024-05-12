@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbsdunvpkrq8c"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_pjlpk"]
+[ext_resource type="PackedScene" uid="uid://84b4wiitkfm7" path="res://sprite_2d.tscn" id="1_xyg80"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_pjlpk")
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_xyg80")]
+
+[node name="Timer" type="Timer" parent="Sprite2D"]
+wait_time = 0.1
+
+[node name="Button_char" type="Button" parent="Sprite2D"]
+show_behind_parent = true
+offset_left = -57.0
+offset_top = -57.0
+offset_right = 57.0
+offset_bottom = 59.0
+
+[node name="Button" type="Button" parent="."]
+offset_right = 197.0
+offset_bottom = 109.0
+text = "Toggle motion"
+
+[connection signal="pressed" from="Button" to="Sprite2D" method="_on_button_pressed"]
