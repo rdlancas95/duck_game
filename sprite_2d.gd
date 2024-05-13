@@ -19,8 +19,10 @@ func _on_timer_timeout():
 func on_health_changed(old_health, new_health):
 	var screenshake = true
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(.5,.5), .32)
-	tween.tween_property(self, "scale", Vector2(1.5,1.5), .32)
+	self.modulate = Color(1,0,0,1)
+	tween.parallel().tween_property(self, 'modulate', Color(1,1,1,1), .5)
+	tween.parallel().tween_property(self, "scale", Vector2(.5,.5), .5)
+	tween.tween_property(self, "scale", Vector2(1.3,1.3), .32)
 	tween.tween_property(self, "scale", Vector2(1,1), .32)
 	
 	#tween.tween_property($Sprite2D, "scale", Vector2(2,2), 1)
