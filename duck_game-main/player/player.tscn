@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://yhjxm8iehakp"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_f5mpv"]
+[ext_resource type="Texture2D" uid="uid://cyo3vlep3r67b" path="res://art/playerGrey_walk1.png" id="1_uc3v6"]
+[ext_resource type="Texture2D" uid="uid://d3ihod8mdldoo" path="res://art/playerGrey_walk2.png" id="2_d2b00"]
+[ext_resource type="Texture2D" uid="uid://bcnlceln6fiom" path="res://art/playerGrey_up1.png" id="2_uqul3"]
+[ext_resource type="Texture2D" uid="uid://kn4dsftb08f5" path="res://art/playerGrey_up2.png" id="3_q46tw"]
+[ext_resource type="Script" path="res://player/chat_bubble.gd" id="6_1sbxb"]
+[ext_resource type="Texture2D" uid="uid://sh7ewsv27rda" path="res://Textures/text bubbles/2.png" id="6_6odsg"]
+[ext_resource type="Script" path="res://player/Sprite2D.gd" id="8_ps3it"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_43f56"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uqul3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q46tw")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uc3v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d2b00")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ekvr8"]
+radius = 7.35996
+height = 21.1863
+
+[node name="player" type="Area2D"]
+script = ExtResource("1_f5mpv")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_43f56")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(-3.6285, 3.23522)
+shape = SubResource("CapsuleShape2D_ekvr8")
+
+[node name="chat_bubble" type="Label" parent="."]
+modulate = Color(0.0177324, 0.0177324, 0.0177324, 1)
+z_index = 1
+offset_left = 32.0
+offset_top = -48.75
+offset_right = 112.0
+offset_bottom = -25.75
+text = "Uhaeeha"
+horizontal_alignment = 1
+script = ExtResource("6_1sbxb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(72, -36.75)
+scale = Vector2(2.94444, 1.78)
+texture = ExtResource("6_6odsg")
+script = ExtResource("8_ps3it")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

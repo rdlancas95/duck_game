@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh8xquphkqqr7"]
+
+[ext_resource type="Texture2D" uid="uid://ca7wbusf7ogw" path="res://Textures/ducky_hat.png" id="1_ql6rj"]
+[ext_resource type="Script" path="res://ducky_hat.gd" id="2_moc4h"]
+
+[node name="Music-ducky-c473-430-min" type="Sprite2D"]
+position = Vector2(653, 332)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ql6rj")
+script = ExtResource("2_moc4h")
